@@ -1,0 +1,80 @@
+//http://discuss.codechef.com/questions/15943/numfact-editorial
+//https://codechef_shared.s3.amazonaws.com/download/Solutions/2014/September/Tester/FACTORIZ.cpp
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <memory.h>
+#include <algorithm>
+using namespace std;
+
+#define C 2010000
+#define lastprime 60000
+
+struct LLNum {
+	int a[111 + 5];
+	int len;
+} N;
+
+char s[1000 + 5], ret[1000 + 5];
+int i, j, pn, p[C + 10], Tn, wn, ls;
+long long w[200000 + 10];
+bool sieve[C + 10];
+
+
+//factorize number below 10^18
+void solve_small () {
+	wn = 0;
+	long long N = 0;
+	for(i = 0; i < ls; i++) N = 10 * N + s[i] - '0';
+	for(int i = 1; i <= pn && N >= p[i] * p[i]; i++) 
+		while (N % p[i] == 0) {
+			w[++wn] = p[i];
+			N /= p[i];
+		}
+	if (N > 1) {
+		w[++wn] = N;
+	}
+	printf("%d\n", wn);
+	for(int i = 1; i <= wn; i++)
+		printf("%lld\n", w[i]);
+}
+/*
+First, we determine, whether the given integer is smaller than 1018;
+If it's so, we can use long long data type, that is faster and simpler to use.
+We can brute-force all the primes not greater than 106 and check whether they divide the given integer or not. 
+After we divide the given number by all its' divisors not greater than 106, 
+it will be either 1, either a prime, either a product of two large primes.
+*/
+int main (int argc, char * const argv[]) {
+	
+	for(i = 2; i * i <= C; i++) 
+		if (!sieve[i]) {
+			j = i * i;
+			while (j <= C) {
+				sieve[j] = true;
+				j += i;
+			}
+		}
+	
+	for(i = 2; i <= C; i++) 
+		if (!sieve[i]) {
+			++pn;
+			p[pn] = i;
+		}
+	
+	scanf("%d", &Tn);
+	gets(s);
+	while (Tn--) {
+		gets(s);
+		ls = strlen(s);
+		if (ls < 18) {
+			solve_small();
+			continue;
+		}
+		
+		
+		
+		}
+	}
+    return 0;
+}
