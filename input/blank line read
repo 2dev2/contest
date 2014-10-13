@@ -1,0 +1,6 @@
+1
+//http://saicheems.wordpress.com/2013/10/25/uva-10405-longest-common-subsequence/
+Note that for this problem an input string can be empty. As a result, 
+getline and cin will not work. You should use gets in order to read in properly.
+
+2
