@@ -1,5 +1,7 @@
 /*
 // Dynamic Programming Code (Bottom-up):
+//http://shiv4289.wordpress.com/2012/02/07/lcs-and-lis/
+//http://www.ics.uci.edu/~eppstein/161/960229.html
 
 The DP code above moves bottom-up. It solves all the subproblems. 
 Sometimes it may not be required to solve all the subproblems but only a few of them. 
